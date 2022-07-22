@@ -7,7 +7,7 @@
 | Project    | Main learnings | Demo | 
 | ---------------- |:-------------:| --------- |
 | [✅ Project 1: WeSplit](https://www.hackingwithswift.com/books/ios-swiftui/wesplit-introduction) | TextField, Picker | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project1.png">
-| [Project 2: Guess the flag](https://www.hackingwithswift.com/books/ios-swiftui/guess-the-flag-introduction) | Stacks, images, alerts |
+| [✅ Project 2: Guess the flag](https://www.hackingwithswift.com/books/ios-swiftui/guess-the-flag-introduction) | Stacks, images, alerts | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project2.png">
 | [Project 3: Views and Modifiers](https://www.hackingwithswift.com/books/ios-swiftui/views-and-modifiers-introduction) | Swift's rendering system |
 | [Project 4: BetterRest](https://www.hackingwithswift.com/books/ios-swiftui/betterrest-introduction) | Machine learning |
 | [Project 5: Word Scramble](https://www.hackingwithswift.com/books/ios-swiftui/word-scramble-introduction) | List |
