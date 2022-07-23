@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+// Create a ViewModifier for making titles blue and large
+struct BlueTitle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.blue)
+    }
+}
+
+extension View {
+    func BlueTitleStyle() -> some View {
+        modifier(BlueTitle())
+    }
+}
+
 struct GridStack<Content: View>: View {
     let rows: Int
     let columns: Int
@@ -16,6 +31,7 @@ struct GridStack<Content: View>: View {
         VStack {
             ForEach(0..<rows, id: \.self) { row in
                 HStack {
+                    Text("\(row)").BlueTitleStyle()
                     ForEach(0..<columns, id: \.self) { column in
                         content(row, column)
                     }
