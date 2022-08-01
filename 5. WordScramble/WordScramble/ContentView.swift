@@ -13,12 +13,15 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
     
+    @State private var gameScore = 0
+    
     var body: some View {
         NavigationView {
             List {
                 Section {
                     TextField("Enter your word", text: $newWord)
                         .autocapitalization(.none)
+                        .disableAutocorrection(true)
                 }
                 
                 Section {
@@ -30,8 +33,20 @@ struct ContentView: View {
                         }
                     }
                 }
+                Section {
+                    Text("\(gameScore)")
+                } header: {
+                    Text("Current score")
+                        .font(.headline)
+                }
             }
+            .listStyle(.grouped)
             .navigationTitle(rootWord)
+            .toolbar(content: {
+                Button("Restart") {
+                    startGame()
+                }
+            })
             .onSubmit(addNewWord)
             .onAppear(perform: startGame)
             .alert(errorTitle, isPresented: $showingError) {
@@ -46,7 +61,7 @@ struct ContentView: View {
     
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-        guard answer.count > 0 else { return }
+        guard answer.count > 2 else { return }
         
         guard isOriginal(word: answer) else {
             wordError(title: "Word used already", message: "Be more original!")
@@ -67,7 +82,7 @@ struct ContentView: View {
             // better user experience to insert the word at the beginning of the array
             usedWords.insert(answer, at: 0)
         }
-        print(usedWords)
+        updateGameScore(answer: answer)
         newWord = ""
     }
     
@@ -76,6 +91,9 @@ struct ContentView: View {
             if let startWords = try? String(contentsOf: startWordsURL) {
                 let allWords = startWords.components(separatedBy: "\n")
                 rootWord = allWords.randomElement() ?? "silkworm"
+                usedWords = [String]()
+                gameScore = 0
+                newWord = ""
                 return
             }
         }
@@ -113,6 +131,10 @@ struct ContentView: View {
         errorTitle = title
         errorMessage = message
         showingError = true
+    }
+    
+    func updateGameScore(answer: String) {
+        gameScore += answer.count
     }
 }
 
