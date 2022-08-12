@@ -11,7 +11,7 @@
 | [✅ Project 3: Views and Modifiers](https://www.hackingwithswift.com/books/ios-swiftui/views-and-modifiers-introduction) | Swift's rendering system | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project3.png">
 | [✅ Project 4: BetterRest](https://www.hackingwithswift.com/books/ios-swiftui/betterrest-introduction) | Machine learning | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project4-2.png">
 | [✅ Project 5: Word Scramble](https://www.hackingwithswift.com/books/ios-swiftui/word-scramble-introduction) | List | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project5-1.png">
-| [Project 6: Animation](https://www.hackingwithswift.com/books/ios-swiftui/animation-introduction) | springs, bounces |
+| [✅ Project 6: Animation](https://www.hackingwithswift.com/books/ios-swiftui/animation-introduction) | springs, bounces | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project6.gif">
 | [Project 7: iExpense](https://www.hackingwithswift.com/books/ios-swiftui/iexpense-introduction) | @State, @StateObject |
 | [Project 8: Moonshot](https://www.hackingwithswift.com/books/ios-swiftui/moonshot-introduction) | ScrollView, Codable |
 | [Project 9: Drawing](https://www.hackingwithswift.com/books/ios-swiftui/drawing-introduction) | shapes, paths, colors |
