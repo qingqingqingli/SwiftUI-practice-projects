@@ -4,21 +4,31 @@
 
 import SwiftUI
 
-struct User: Codable {
-    let firstName: String
-    let lastName: String
-}
-
 struct ContentView: View {
-    @State private var user = User(firstName: "Qing", lastName: "Li")
+    // use @StateObject only when creating a class instance
+    // in the other cases, use @ObservedObject
+    @StateObject var expenses = Expenses()
+    
+    func removeItems(at offsets: IndexSet) {
+        expenses.items.remove(atOffsets: offsets)
+    }
     
     var body: some View {
-        Button("Save User") {
-            let encoder = JSONEncoder()
-            
-            // Data can be written straight into UserDefaults
-            if let data = try? encoder.encode(user) {
-                UserDefaults.standard.set(data, forKey: "UserData")
+        NavigationView {
+            List {
+                ForEach(expenses.items, id: \.name) { item in
+                    Text(item.name)
+                }
+                .onDelete(perform: removeItems)
+            }
+            .navigationTitle("iExpense")
+            .toolbar {
+                Button {
+                    let expense = ExpenseItem(name: "test", type: "test_type", amount: 9.9)
+                    expenses.items.append(expense)
+                } label: {
+                    Image(systemName: "plus")
+                }
             }
         }
     }
