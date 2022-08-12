@@ -4,23 +4,16 @@
 
 import SwiftUI
 
-// need to conform to ObervableObject
-class User: ObservableObject {
-    // Any views using the class get updated when this property change
-    @Published var firstName = "Bilbo"
-    @Published var lastName = "Baggins"
-}
-
 struct ContentView: View {
-    // should only be used when we're creating the object
-    @StateObject var user = User()
+    
+    @State private var isShowingSheet = false
     
     var body: some View {
-        VStack {
-            Text("Your name is \(user.firstName) \(user.lastName).")
-            
-            TextField("First name", text: $user.firstName)
-            TextField("Last name", text: $user.lastName)
+        Button("Show sheet") {
+            isShowingSheet.toggle()
+        }
+        .sheet(isPresented: $isShowingSheet) {
+            SecondView(name: "Hello world!")
         }
     }
 }
