@@ -25,9 +25,11 @@ struct ContentView: View {
     
     @State private var animationAmount = 0.0
     @State private var tappedFlagIndex = 0
+    @State private var opacityDegree = 1.0
     
     func flagTapped(_ number: Int) {
         tappedFlagIndex = number
+        opacityDegree = 0.25
         if number == correctAnswer {
             scoreTitle = "Correct"
             score += 1
@@ -45,6 +47,7 @@ struct ContentView: View {
     func askQuestion(){
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        opacityDegree = 1
     }
     
     func resetGame(){
@@ -79,13 +82,18 @@ struct ContentView: View {
                     ForEach(0..<3) { number in
                         Button {
                             flagTapped(number)
-                            withAnimation {
+                            withAnimation(.default) {
                                 animationAmount += 360
                             }
                         } label: {
                             FlagImage(name: countries[number])
                         }
-                        .rotation3DEffect(.degrees(number == tappedFlagIndex ? animationAmount : 0.0), axis: (x: 0, y: 1, z: 0))
+                        .rotation3DEffect(
+                            .degrees(number == tappedFlagIndex ? animationAmount : 0.0),
+                            axis: (x: 0, y: 1, z: 0)
+                        )
+                        .opacity(number != tappedFlagIndex ? opacityDegree : 1)
+                        .animation(.interpolatingSpring(stiffness: 10, damping: 5), value: opacityDegree)
                     }
                 }
                 .frame(maxWidth: .infinity)
