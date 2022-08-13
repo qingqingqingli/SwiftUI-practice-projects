@@ -32,6 +32,7 @@ struct AddView: View {
                 .keyboardType(.decimalPad)
             }
             .navigationTitle("Add new expenses")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 Button("Save") {
                     let expenseItem = ExpenseItem(

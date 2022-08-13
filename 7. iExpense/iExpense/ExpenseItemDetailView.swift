@@ -22,6 +22,7 @@ struct ExpenseItemDetailView: View {
                 }
             }
             .navigationTitle("Expense detail")
+            .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(.stack)
     }

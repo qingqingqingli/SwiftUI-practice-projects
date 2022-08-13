@@ -9,15 +9,27 @@ struct ContentView: View {
     @State private var showingAddExpense = false
     @State private var showingDetailedExpense = false
     
-    func removeItems(at offsets: IndexSet) {
+    private var personalItems: [ExpenseItem] {
+        expenses.items.filter { item in
+            item.type == "Personal"
+        }
+    }
+    
+    private var businessItems: [ExpenseItem] {
+        expenses.items.filter { item in
+            item.type == "Business"
+        }
+    }
+    
+    private func removeItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
     }
     
-    var body: some View {
-        NavigationView {
-            List {
-                ForEach(expenses.items) { item in
-                    ExpenseRowView(item: item)
+    @ViewBuilder
+    func expenseSection(for items: [ExpenseItem], in header: String) -> some View {
+        Section {
+            ForEach(items) { item in
+                ExpenseRowView(item: item)
                     .contentShape(Rectangle())
                     .onTapGesture {
                         showingDetailedExpense = true
@@ -25,9 +37,21 @@ struct ContentView: View {
                     .sheet(isPresented: $showingDetailedExpense) {
                         ExpenseItemDetailView(expense: item)
                     }
-                }
-                .onDelete(perform: removeItems)
-                
+            }
+            .onDelete(perform: removeItems)
+        } header: {
+            if items.count > 0 {
+                Text(header)
+                    .font(.headline)
+            }
+        }
+    }
+    
+    var body: some View {
+        NavigationView {
+            List {
+                expenseSection(for: personalItems, in: "Personal")
+                expenseSection(for: businessItems, in: "Business")
             }
             .navigationTitle("iExpense")
             .toolbar {
