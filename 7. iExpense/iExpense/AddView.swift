@@ -45,6 +45,7 @@ struct AddView: View {
                 .disabled(name.count == 0 || amount == 0)
             }
         }
+        .navigationViewStyle(.stack)
     }
 }
 
