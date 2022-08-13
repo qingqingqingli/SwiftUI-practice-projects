@@ -15,7 +15,9 @@ struct ExpenseRowView: View {
                 Text(item.type)
             }
             Spacer()
-            Text(item.amount, format: .currency(code: "USD"))
+            Text(item.amount,
+                 format: .currency(code: Expenses.currencyCode)
+            )
         }
         .padding(.horizontal, 8)
     }
