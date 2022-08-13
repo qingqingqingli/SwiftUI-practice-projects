@@ -1,8 +1,5 @@
 //
 //  iExpenseApp.swift
-//  iExpense
-//
-//  Created by Qing Li on 12/08/2022.
 //
 
 import SwiftUI

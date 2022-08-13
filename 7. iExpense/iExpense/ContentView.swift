@@ -9,6 +9,8 @@ struct ContentView: View {
     // in the other cases, use @ObservedObject
     @StateObject var expenses = Expenses()
     
+    @State private var showingAddExpense = false
+    
     func removeItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
     }
@@ -18,19 +20,30 @@ struct ContentView: View {
             List {
                 // if expenses are identifiable, we don't need to set a id
                 ForEach(expenses.items) { item in
-                    Text(item.name)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(item.name)
+                                .font(.headline)
+                            Text(item.type)
+                        }
+                        Spacer()
+                        Text(item.amount, format: .currency(code: "USD"))
+                    }
                 }
                 .onDelete(perform: removeItems)
+                
             }
             .navigationTitle("iExpense")
             .toolbar {
                 Button {
-                    let expense = ExpenseItem(name: "test", type: "test_type", amount: 9.9)
-                    expenses.items.append(expense)
+                    showingAddExpense = true
                 } label: {
                     Image(systemName: "plus")
                 }
             }
+        }
+        .sheet(isPresented: $showingAddExpense) {
+            AddView(expenses: expenses)
         }
     }
 }
