@@ -6,8 +6,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        GeometryReader { geo in
+            Image("example")
+                .resizable()
+                .scaledToFit()
+                .frame(width: geo.size.width * 0.6)
+                .frame(width: geo.size.width, height: geo.size.height)
+        }
     }
 }
 

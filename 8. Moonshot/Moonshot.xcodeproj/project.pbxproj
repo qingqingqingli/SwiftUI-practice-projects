@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B25DEF528A7DEFF00FD25CD /* example.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B25DEF428A7DEFF00FD25CD /* example.jpg */; };
 		2BDC33D128A7DE2A007D9E1E /* MoonshotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDC33D028A7DE2A007D9E1E /* MoonshotApp.swift */; };
 		2BDC33D328A7DE2A007D9E1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDC33D228A7DE2A007D9E1E /* ContentView.swift */; };
 		2BDC33D528A7DE2B007D9E1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BDC33D428A7DE2B007D9E1E /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B25DEF428A7DEFF00FD25CD /* example.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = example.jpg; sourceTree = "<group>"; };
 		2BDC33CD28A7DE2A007D9E1E /* Moonshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moonshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDC33D028A7DE2A007D9E1E /* MoonshotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonshotApp.swift; sourceTree = "<group>"; };
 		2BDC33D228A7DE2A007D9E1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 				2BDC33D028A7DE2A007D9E1E /* MoonshotApp.swift */,
 				2BDC33D228A7DE2A007D9E1E /* ContentView.swift */,
 				2BDC33D428A7DE2B007D9E1E /* Assets.xcassets */,
+				2B25DEF428A7DEFF00FD25CD /* example.jpg */,
 				2BDC33D628A7DE2B007D9E1E /* Preview Content */,
 			);
 			path = Moonshot;
@@ -125,6 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B25DEF528A7DEFF00FD25CD /* example.jpg in Resources */,
 				2BDC33D828A7DE2B007D9E1E /* Preview Assets.xcassets in Resources */,
 				2BDC33D528A7DE2B007D9E1E /* Assets.xcassets in Resources */,
 			);
