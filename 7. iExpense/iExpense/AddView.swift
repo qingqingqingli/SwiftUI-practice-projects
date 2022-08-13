@@ -25,7 +25,6 @@ struct AddView: View {
                         Text($0)
                     }
                 }
-                
                 TextField("Amount", value: $amount, format: .currency(code: "USD"))
                     .keyboardType(.decimalPad)
             }
@@ -40,6 +39,7 @@ struct AddView: View {
                     expenses.items.append(expenseItem)
                     dismiss()
                 }
+                .disabled(name.count == 0 || amount == 0)
             }
         }
     }

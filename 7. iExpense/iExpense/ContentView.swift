@@ -5,11 +5,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    // use @StateObject only when creating a class instance
-    // in the other cases, use @ObservedObject
     @StateObject var expenses = Expenses()
-    
     @State private var showingAddExpense = false
+    @State private var showingDetailedExpense = false
     
     func removeItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
@@ -18,16 +16,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                // if expenses are identifiable, we don't need to set a id
                 ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
-                        }
-                        Spacer()
-                        Text(item.amount, format: .currency(code: "USD"))
+                    ExpenseRowView(item: item)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        showingDetailedExpense = true
+                    }
+                    .sheet(isPresented: $showingDetailedExpense) {
+                        ExpenseItemDetailView(expense: item)
                     }
                 }
                 .onDelete(perform: removeItems)
@@ -42,6 +38,7 @@ struct ContentView: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
         .sheet(isPresented: $showingAddExpense) {
             AddView(expenses: expenses)
         }
