@@ -25,7 +25,7 @@ struct AddView: View {
                         Text($0)
                     }
                 }
-                TextField("Amount",
+                TextField("0.0",
                           value: $amount,
                           format: .currency(code: Expenses.currencyCode)
                 )

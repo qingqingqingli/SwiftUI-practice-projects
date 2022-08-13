@@ -35,7 +35,7 @@ struct ContentView: View {
                         showingDetailedExpense = true
                     }
                     .sheet(isPresented: $showingDetailedExpense) {
-                        ExpenseItemDetailView(expense: item)
+                        ExpenseDetailView(expense: item)
                     }
             }
             .onDelete(perform: removeItems)

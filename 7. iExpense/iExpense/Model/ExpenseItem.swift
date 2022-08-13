@@ -28,6 +28,13 @@ class Expenses : ObservableObject {
         return "USD"
     }
     
+    static var currencySymbol: String {
+        if let symbol = Locale.current.currencySymbol {
+            return symbol
+        }
+        return "$"
+    }
+    
     init() {
         if let savedItems = UserDefaults.standard.data(forKey: "Items") {
             if let decodedItems = try? JSONDecoder().decode([ExpenseItem].self, from: savedItems) {

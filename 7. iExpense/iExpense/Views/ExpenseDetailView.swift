@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct ExpenseItemDetailView: View {
+struct ExpenseDetailView: View {
     
     let expense: ExpenseItem
     @Environment(\.dismiss) var dismiss
@@ -14,7 +14,7 @@ struct ExpenseItemDetailView: View {
             Form {
                 SectionView(sectionName: "Expense", text: expense.name)
                 SectionView(sectionName: "Type", text: expense.type)
-                SectionView(sectionName: "Amount", text: "\(expense.amount)")
+                SectionView(sectionName: "Amount", text: "\(Expenses.currencySymbol) \(expense.amount)")
             }
             .toolbar {
                 Button("OK") {
@@ -46,6 +46,6 @@ struct SectionView: View {
 struct ExpenseItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let item = ExpenseItem(name: "test", type: "Personal", amount: 10.0)
-        ExpenseItemDetailView(expense: item)
+        ExpenseDetailView(expense: item)
     }
 }
