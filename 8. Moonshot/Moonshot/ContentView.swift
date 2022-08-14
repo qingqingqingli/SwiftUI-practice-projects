@@ -17,7 +17,6 @@ struct ContentView: View {
             // when it's a regular HStack or VStack
             // the size of ScrollView is based on the children content
             // so the maxWidth needs to be set on VStack not ScrollView
-            x 
             // however when it's a lazy stack
             // it automatically takes up as much as space as possible
 //            .frame(maxWidth: .infinity)
