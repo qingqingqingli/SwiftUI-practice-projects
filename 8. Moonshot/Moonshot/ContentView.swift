@@ -26,19 +26,36 @@ struct ContentView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
+                                    .padding()
+                                
                                 VStack {
                                     Text(mission.displayName)
                                         .font(.headline)
+                                        .foregroundColor(.white)
                                     Text(mission.formattedLaunchDate)
                                         .font(.caption)
+                                    // gives a hint of the visual hierarchy
+                                        .foregroundColor(.white.opacity(0.5))
                                 }
-                                
+                                .padding(.vertical)
+                                .frame(maxWidth: .infinity)
+                                .background(.lightBackground)
                             }
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(.lightBackground)
+                            )
                         }
                     }
                 }
+                // if you pad the scroll view
+                // you're also padding it's scrollbars, which will look odd
+                .padding([.horizontal, .bottom])
             }
             .navigationTitle("Moonshot")
+            .background(.darkBackground)
+            .preferredColorScheme(.dark)
         }
         .navigationViewStyle(.stack)
 
