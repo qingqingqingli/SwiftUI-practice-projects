@@ -6,20 +6,17 @@ import SwiftUI
 
 struct ContentView: View {
     
-    // we are happy to fit in as many as columns as possible
-    let layout = [
-        GridItem(.adaptive(minimum: 80, maximum: 100))
-    ]
+    let astronauts = Bundle.main.decode("astronauts.json")
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: layout) {
-                ForEach(0..<99) {
-                    Text("Item \($0)")
-                }
-            }
-        }
+        Text("\(astronauts.count)")
     }
+}
+
+struct Astronaut: Codable, Identifiable {
+    let id: String
+    let name: String
+    let description: String
 }
 
 struct ContentView_Previews: PreviewProvider {
