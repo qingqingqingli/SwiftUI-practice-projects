@@ -32,3 +32,8 @@ struct Mission: Codable, Identifiable {
         launchDate?.formatted(date:.abbreviated, time: .omitted) ?? "N/A"
     }
 }
+
+struct CrewMember {
+    let role: String
+    let astronaut: Astronaut
+}
