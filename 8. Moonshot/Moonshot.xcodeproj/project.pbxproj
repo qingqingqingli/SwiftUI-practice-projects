@@ -50,11 +50,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2BDC33C428A7DE2A007D9E1E = {
+		2BAEA57528AFFDC90079E92C /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				2B0E410C28AAD8E700C36845 /* MissionsListView.swift */,
+				2B97368228AA92790046BF06 /* MissionView.swift */,
+				2B0E410828AACDAC00C36845 /* AstronautView.swift */,
+				2BDC33D228A7DE2A007D9E1E /* ContentView.swift */,
 				2B0E410A28AAD74500C36845 /* MissionsGridView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2BAEA57628AFFDE00079E92C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2B6CA5D228A986EB006132A0 /* Color-Theme.swift */,
+				2B6CA5CE28A968EE006132A0 /* Bundle-Decodable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		2BDC33C428A7DE2A007D9E1E = {
+			isa = PBXGroup;
+			children = (
 				2BDC33CF28A7DE2A007D9E1E /* Moonshot */,
 				2BDC33CE28A7DE2A007D9E1E /* Products */,
 			);
@@ -71,15 +90,12 @@
 		2BDC33CF28A7DE2A007D9E1E /* Moonshot */ = {
 			isa = PBXGroup;
 			children = (
+				2BAEA57628AFFDE00079E92C /* Utils */,
+				2BAEA57528AFFDC90079E92C /* Views */,
 				2B6CA5CC28A9682F006132A0 /* missions.json */,
 				2B6CA5CA28A96824006132A0 /* astronauts.json */,
 				2BDC33D028A7DE2A007D9E1E /* MoonshotApp.swift */,
-				2BDC33D228A7DE2A007D9E1E /* ContentView.swift */,
-				2B97368228AA92790046BF06 /* MissionView.swift */,
-				2B0E410828AACDAC00C36845 /* AstronautView.swift */,
 				2B6CA5D028A97FC8006132A0 /* Model.swift */,
-				2B6CA5D228A986EB006132A0 /* Color-Theme.swift */,
-				2B6CA5CE28A968EE006132A0 /* Bundle-Decodable.swift */,
 				2BDC33D428A7DE2B007D9E1E /* Assets.xcassets */,
 				2BDC33D628A7DE2B007D9E1E /* Preview Content */,
 			);

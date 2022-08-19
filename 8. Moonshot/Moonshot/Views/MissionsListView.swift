@@ -10,15 +10,23 @@ struct MissionsListView: View {
     
     var body: some View {
         GeometryReader { geometry in
+            // TODO: Change background color of List in XCode 14
             List {
                 ForEach(missions) { mission in
                     NavigationLink {
                         MissionView(mission: mission, astronauts: astronauts)
                     } label: {
-                        Image(mission.image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: geometry.size.width * 0.3)
+                        HStack(spacing: 16) {
+                            Image(mission.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: geometry.size.width * 0.2)
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(mission.displayName)
+                                Text(mission.formattedLaunchDate)
+                            }
+                            .padding(.vertical)
+                        }
                     }
                 }
             }

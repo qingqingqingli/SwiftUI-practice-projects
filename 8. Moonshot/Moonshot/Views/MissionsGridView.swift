@@ -60,5 +60,6 @@ struct MissionsGridView_Previews: PreviewProvider {
     
     static var previews: some View {
         MissionsGridView(missions: missions, astronauts: astronauts)
+            .preferredColorScheme(.dark)
     }
 }

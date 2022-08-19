@@ -28,10 +28,10 @@ struct ContentView: View {
                     Text("Show list view")
                 }
                 .toggleStyle(.switch)
+                .tint(.blue)
             }
         }
         .navigationViewStyle(.stack)
-        
     }
 }
 
