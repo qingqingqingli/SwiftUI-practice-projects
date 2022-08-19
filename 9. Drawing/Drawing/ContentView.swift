@@ -6,14 +6,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        // use GeometryReader to scale them relative to their container
-        Path { path in
-            path.move(to: CGPoint(x: 200, y: 100))
-            path.addLine(to: CGPoint(x: 100, y: 300))
-            path.addLine(to: CGPoint(x: 300, y: 300))
-            path.addLine(to: CGPoint(x: 200, y: 100))
-        }
-        .stroke(.blue, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+        // also supports StrokeStyle
+        Triangle()
+            .stroke(.red, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
+            .frame(width: 300, height: 300)
+    }
+}
+
+struct Triangle: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        
+        return path
     }
 }
 
