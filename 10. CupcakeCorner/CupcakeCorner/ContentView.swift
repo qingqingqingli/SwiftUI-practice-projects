@@ -4,45 +4,57 @@
 
 import SwiftUI
 
-// Example of how to let Swift know what data we want to write,
-// knows how to convert some encoded data into object's properties
-// and knows how to convert our object's properties into encoded data
-class User: ObservableObject, Codable {
-    
-    // property wrapper wrap the value inside another type that adds some additional functionality
-    // @Published is a generic struct that store any kind of value
-    @Published private var name = "Paul Hudson"
-    
-    // 1. initializer is handed an instance of a new type called Decoder
-    // 2. required means that any subclass needs to add their own values
-    
-    required init(from decoder: Decoder) throws {
-        
-        // 3. ask our Decoder instance for a container matching all the coding keys
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        // 4. read values directly form that container by referencing cases
-        name = try container.decode(String.self, forKey: .name)
-    }
-    
-    // Tell Swift how to encode this type
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-    }
+struct Response: Codable {
+    var results: [Result]
 }
 
+struct Result: Codable {
+    var trackId: Int
+    var trackName: String
+    var collectionName: String
+}
 
 struct ContentView: View {
+    @State private var results = [Result]()
+    
+    let iTunesApiUrl: String = "https://itunes.apple.com/search?term=taylor+swift&entity=song"
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        List(results, id: \.trackId) { item in
+            VStack(alignment: .leading) {
+                Text(item.trackName)
+                    .font(.headline)
+                Text(item.collectionName)
+            }
+        }
+        .task {
+            await loadData()
+        }
     }
-}
-
-// Telling Swift which properties shoud be loaded and saved
-enum CodingKeys: CodingKey {
-    case name
+    
+    // tells Swift that this function might want to go to sleep in order to complete its work
+    func loadData() async {
+        // 1. creating the URL we want to read
+        guard let url = URL(string: iTunesApiUrl) else {
+            print("Invalid URL")
+            return
+        }
+        
+        // 2. fetching the data for that URL
+        do {
+            // takes a URL and returns the Data object at that URL
+            // try -> might throw error
+            // await -> wait for asynchronous functions complete
+            let (data, _) = try await URLSession.shared.data(from: url)
+            
+            // 3. decoding the result of taht data into a Response struct
+            if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
+                results = decodedResponse.results
+            }
+        } catch {
+            print("Invalid data")
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
