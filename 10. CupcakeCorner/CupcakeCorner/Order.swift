@@ -38,4 +38,22 @@ class Order: ObservableObject {
     var hasValidAddress: Bool {
         !name.isEmpty && !streetAddress.isEmpty && !city.isEmpty && !zip.isEmpty
     }
+    
+    // MARK: - Price
+    
+    var cost: Double {
+        // artificial cost
+        var cost = Double(quantity) * 2
+        cost += (Double(type) / 2)
+        
+        if extraFrosting {
+            cost += Double(quantity)
+        }
+        
+        if extraSprinkles {
+            cost += Double(quantity) / 2
+        }
+        
+        return cost
+    }
 }
