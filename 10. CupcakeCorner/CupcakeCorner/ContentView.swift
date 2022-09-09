@@ -20,6 +20,21 @@ struct ContentView: View {
     let iTunesApiUrl: String = "https://itunes.apple.com/search?term=taylor+swift&entity=song"
     
     var body: some View {
+        
+        // SwiftUI can't apply any modifier until it has downloaded the imag
+        AsyncImage(url: URL(string: "https://hws.dev/img/logo.png")) { phrase in
+            if let image = phrase.image {
+                image
+                    .resizable()
+                    .scaledToFit()
+            } else if phrase.error != nil {
+                Text("There was an error loading the image")
+            } else {
+                ProgressView()
+            }
+        }
+        .frame(width: 200, height: 200)
+        
         List(results, id: \.trackId) { item in
             VStack(alignment: .leading) {
                 Text(item.trackName)
