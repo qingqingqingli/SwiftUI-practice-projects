@@ -28,4 +28,14 @@ class Order: ObservableObject {
     
     // whether to add extra sprinkles
     @Published var extraSprinkles = false
+    
+    // MARK: - for delivery details
+    @Published var name = ""
+    @Published var streetAddress = ""
+    @Published var city = ""
+    @Published var zip = ""
+    
+    var hasValidAddress: Bool {
+        !name.isEmpty && !streetAddress.isEmpty && !city.isEmpty && !zip.isEmpty
+    }
 }
