@@ -4,7 +4,7 @@
 
 import Foundation
 
-class Order: ObservableObject {
+class Order: ObservableObject, Codable {
     static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
     
     // type of cake
@@ -56,4 +56,45 @@ class Order: ObservableObject {
         
         return cost
     }
+
+    // MARK: - To enable conforming to Codable
+    
+    enum CodingKeys: CodingKey {
+        case type, quantity, specialRequestEnabled, extraFrosting, extraSprinkles, name, streetAddress, city, zip
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(type, forKey: CodingKeys.type)
+        try container.encode(quantity, forKey: CodingKeys.quantity)
+        
+        try container.encode(specialRequestEnabled, forKey: CodingKeys.specialRequestEnabled)
+        try container.encode(extraFrosting, forKey: CodingKeys.extraFrosting)
+        try container.encode(extraSprinkles, forKey: CodingKeys.extraSprinkles)
+        
+        try container.encode(name, forKey: CodingKeys.name)
+        try container.encode(streetAddress, forKey: CodingKeys.streetAddress)
+        try container.encode(city, forKey: CodingKeys.city)
+        try container.encode(zip, forKey: CodingKeys.zip)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        type = try container.decode(Int.self, forKey: CodingKeys.type)
+        quantity = try container.decode(Int.self, forKey: CodingKeys.quantity)
+        
+        specialRequestEnabled = try container.decode(Bool.self, forKey: CodingKeys.specialRequestEnabled)
+        extraFrosting = try container.decode(Bool.self, forKey: CodingKeys.extraFrosting)
+        extraSprinkles = try container.decode(Bool.self, forKey: CodingKeys.extraSprinkles)
+        
+        name = try container.decode(String.self, forKey: CodingKeys.name)
+        streetAddress = try container.decode(String.self, forKey: CodingKeys.streetAddress)
+        city = try container.decode(String.self, forKey: CodingKeys.city)
+        zip = try container.decode(String.self, forKey: CodingKeys.zip)
+    }
+    
+    // Add empty initializer to allow for the creation of empty order object
+    init() {}
 }
