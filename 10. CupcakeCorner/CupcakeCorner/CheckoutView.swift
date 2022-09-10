@@ -57,7 +57,7 @@ struct CheckoutView: View {
         let url = URL(string: serverURL)!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
+//        request.httpMethod = "POST"
         
         // 3. run request and process response
         do {
@@ -69,6 +69,8 @@ struct CheckoutView: View {
             showingConfirmation = true
         } catch {
             print("Checkout failed.")
+            confirmationMessage = "Your order failed."
+            showingConfirmation = true
         }
     }
 }
