@@ -36,7 +36,10 @@ class Order: ObservableObject, Codable {
     @Published var zip = ""
     
     var hasValidAddress: Bool {
-        !name.isEmpty && !streetAddress.isEmpty && !city.isEmpty && !zip.isEmpty
+        name.isNotEmptyString() &&
+        streetAddress.isNotEmptyString() &&
+        city.isNotEmptyString() &&
+        zip.isNotEmptyString()
     }
     
     // MARK: - Price

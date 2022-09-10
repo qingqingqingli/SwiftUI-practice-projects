@@ -14,6 +14,7 @@
 		2BDC5B2128CB99D10046EA84 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDC5B2028CB99D10046EA84 /* Order.swift */; };
 		2BDC5B2328CB9E5B0046EA84 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDC5B2228CB9E5B0046EA84 /* AddressView.swift */; };
 		2BDC5B2528CB9F8B0046EA84 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDC5B2428CB9F8B0046EA84 /* CheckoutView.swift */; };
+		2BE2DCF928CD1BE800DADF0F /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE2DCF828CD1BE800DADF0F /* String+Validation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		2BDC5B2028CB99D10046EA84 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		2BDC5B2228CB9E5B0046EA84 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		2BDC5B2428CB9F8B0046EA84 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		2BE2DCF828CD1BE800DADF0F /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		2B323B9728C91F620093B311 /* CupcakeCorner */ = {
 			isa = PBXGroup;
 			children = (
+				2BE2DCF828CD1BE800DADF0F /* String+Validation.swift */,
 				2B323B9828C91F620093B311 /* CupcakeCornerApp.swift */,
 				2B323B9A28C91F620093B311 /* ContentView.swift */,
 				2BDC5B2228CB9E5B0046EA84 /* AddressView.swift */,
@@ -149,6 +152,7 @@
 				2BDC5B2128CB99D10046EA84 /* Order.swift in Sources */,
 				2BDC5B2328CB9E5B0046EA84 /* AddressView.swift in Sources */,
 				2BDC5B2528CB9F8B0046EA84 /* CheckoutView.swift in Sources */,
+				2BE2DCF928CD1BE800DADF0F /* String+Validation.swift in Sources */,
 				2B323B9B28C91F620093B311 /* ContentView.swift in Sources */,
 				2B323B9928C91F620093B311 /* CupcakeCornerApp.swift in Sources */,
 			);
