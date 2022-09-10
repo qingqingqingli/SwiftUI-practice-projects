@@ -4,17 +4,25 @@
 
 import Foundation
 
-class Order: ObservableObject, Codable {
+class OrderObservable: ObservableObject {
+    @Published var order: Order
+    
+    init(){
+        order = Order(type: 0, quantity: 0, specialRequestEnabled: false, extraFrosting: false, extraSprinkles: false, name: "", streetAddress: "", city: "", zip: "")
+    }
+}
+
+struct Order: Codable {
     static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
     
     // type of cake
-    @Published var type = 0
+    var type = 0
     
     // quantity of cakes that ordered
-    @Published var quantity = 0
+    var quantity = 0
     
     // whether the user wants special requests
-    @Published var specialRequestEnabled = false {
+    var specialRequestEnabled = false {
         didSet {
             if specialRequestEnabled == false {
                 extraFrosting = false
@@ -24,16 +32,16 @@ class Order: ObservableObject, Codable {
     }
     
     // whether to add extra frosting
-    @Published var extraFrosting = false
+    var extraFrosting = false
     
     // whether to add extra sprinkles
-    @Published var extraSprinkles = false
+    var extraSprinkles = false
     
     // MARK: - for delivery details
-    @Published var name = ""
-    @Published var streetAddress = ""
-    @Published var city = ""
-    @Published var zip = ""
+    var name = ""
+    var streetAddress = ""
+    var city = ""
+    var zip = ""
     
     var hasValidAddress: Bool {
         name.isNotEmptyString() &&
@@ -82,22 +90,22 @@ class Order: ObservableObject, Codable {
         try container.encode(zip, forKey: CodingKeys.zip)
     }
     
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        type = try container.decode(Int.self, forKey: CodingKeys.type)
-        quantity = try container.decode(Int.self, forKey: CodingKeys.quantity)
-        
-        specialRequestEnabled = try container.decode(Bool.self, forKey: CodingKeys.specialRequestEnabled)
-        extraFrosting = try container.decode(Bool.self, forKey: CodingKeys.extraFrosting)
-        extraSprinkles = try container.decode(Bool.self, forKey: CodingKeys.extraSprinkles)
-        
-        name = try container.decode(String.self, forKey: CodingKeys.name)
-        streetAddress = try container.decode(String.self, forKey: CodingKeys.streetAddress)
-        city = try container.decode(String.self, forKey: CodingKeys.city)
-        zip = try container.decode(String.self, forKey: CodingKeys.zip)
-    }
-    
-    // Add empty initializer to allow for the creation of empty order object
-    init() {}
+//    required init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//
+//        type = try container.decode(Int.self, forKey: CodingKeys.type)
+//        quantity = try container.decode(Int.self, forKey: CodingKeys.quantity)
+//
+//        specialRequestEnabled = try container.decode(Bool.self, forKey: CodingKeys.specialRequestEnabled)
+//        extraFrosting = try container.decode(Bool.self, forKey: CodingKeys.extraFrosting)
+//        extraSprinkles = try container.decode(Bool.self, forKey: CodingKeys.extraSprinkles)
+//
+//        name = try container.decode(String.self, forKey: CodingKeys.name)
+//        streetAddress = try container.decode(String.self, forKey: CodingKeys.streetAddress)
+//        city = try container.decode(String.self, forKey: CodingKeys.city)
+//        zip = try container.decode(String.self, forKey: CodingKeys.zip)
+//    }
+//
+//    // Add empty initializer to allow for the creation of empty order object
+//    init() {}
 }

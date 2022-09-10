@@ -6,7 +6,7 @@ import SwiftUI
 
 struct CheckoutView: View {
 
-    @ObservedObject var order: Order
+    @ObservedObject var orderObservable: OrderObservable
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
     
@@ -26,7 +26,7 @@ struct CheckoutView: View {
                 }
                 .frame(height: 233)
                 
-                Text("Your total is \(order.cost, format: .currency(code: "USD"))")
+                Text("Your total is \(orderObservable.order.cost, format: .currency(code: "USD"))")
                     .font(.title)
                 
                 Button("Place order") {
@@ -48,7 +48,7 @@ struct CheckoutView: View {
     func placeOrder() async {
         // 1. convert order object to JSON data to be sent
         
-        guard let encoded = try? JSONEncoder().encode(order) else {
+        guard let encoded = try? JSONEncoder().encode(orderObservable.order) else {
             print ("Failed to encode order")
             return
         }
@@ -57,7 +57,7 @@ struct CheckoutView: View {
         let url = URL(string: serverURL)!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.httpMethod = "POST"
+        request.httpMethod = "POST"
         
         // 3. run request and process response
         do {
@@ -77,6 +77,6 @@ struct CheckoutView: View {
 
 struct CheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckoutView(order: Order())
+        CheckoutView(orderObservable: OrderObservable())
     }
 }
