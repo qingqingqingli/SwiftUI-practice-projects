@@ -13,9 +13,9 @@
 | [✅ Project 5: Word Scramble](https://www.hackingwithswift.com/books/ios-swiftui/word-scramble-introduction) | List | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project5-1.png">
 | [✅ Project 6: Animation](https://www.hackingwithswift.com/books/ios-swiftui/animation-introduction) | springs, bounces | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project6.gif">
 | [✅ Project 7: iExpense](https://www.hackingwithswift.com/books/ios-swiftui/iexpense-introduction) | @State, @StateObject | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project7.png">
-| [✅ Project 8: Moonshot](https://www.hackingwithswift.com/books/ios-swiftui/moonshot-introduction) | ScrollView, Codable | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project8.gif">
-| [Project 9: Drawing](https://www.hackingwithswift.com/books/ios-swiftui/drawing-introduction) | shapes, paths, colors | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project9.gif">
-| [✅ Project 10: Cupcake Corner](https://www.hackingwithswift.com/books/ios-swiftui/cupcake-corner-introduction) | @Published, URLSession, ObervableObject | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project10.gif">
+| [✅ Project 8: Moonshot](https://www.hackingwithswift.com/books/ios-swiftui/moonshot-introduction) | ScrollView, Codable | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project8.jpg">
+| [Project 9: Drawing](https://www.hackingwithswift.com/books/ios-swiftui/drawing-introduction) | shapes, paths, colors | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project9.jpg">
+| [✅ Project 10: Cupcake Corner](https://www.hackingwithswift.com/books/ios-swiftui/cupcake-corner-introduction) | @Published, URLSession, ObervableObject | <img width=150 src="https://github.com/qingqingqingli/SwiftUI-practice-projects/blob/main/demo/project10.jpg">
 | [Project 11: Bookworm](https://www.hackingwithswift.com/books/ios-swiftui/bookworm-introduction) | Core Data |
 | [Project 12: Core Data](https://www.hackingwithswift.com/books/ios-swiftui/core-data-introduction) | In-depth of SwiftUI and Core Data |
 | [Project 13: Instafilter](https://www.hackingwithswift.com/books/ios-swiftui/instafilter-introduction) | link SwiftUI, UIKit, and Core Image |
