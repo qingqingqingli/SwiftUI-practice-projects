@@ -4,52 +4,39 @@
 
 import SwiftUI
 
-struct ColorCyclingCircle: View {
-    var amount = 0.0
-    let steps = 100
-
-    var body: some View {
-        ZStack {
-            ForEach(0..<steps) { value in
-                Circle()
-                    .inset(by: Double(value))
-                    .strokeBorder(
-                        LinearGradient(
-                            gradient: Gradient(colors: [
-                                color(for: value, brightness: 1),
-                                color(for: value, brightness: 0.5)
-                            ]),
-                            startPoint: .top,
-                            endPoint: .bottom
-                        ),
-                        lineWidth: 2
-                    )
-            }
-        }
-        /// Tells SwiftUI to render the contents into an off-screen image before putting it back onto the screen
-        .drawingGroup()
+struct Trapezoid: Shape {
+    var insetAmount: Double
+    
+    /// Behind the scenes, SwiftUI set the animatableData property of our shape to the latest value
+    /// It's down to us on what to do with it
+    var animatableData: Double {
+        get { insetAmount }
+        set { insetAmount = newValue }
     }
 
-    func color(for value: Int, brightness: Double) -> Color {
-        var targetHue = Double(value) / Double(steps) + amount
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
 
-        if targetHue > 1 {
-            targetHue -= 1
-        }
+        path.move(to: CGPoint(x: 0, y: rect.maxY))
+        path.addLine(to: CGPoint(x: insetAmount, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX - insetAmount, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+        path.addLine(to: CGPoint(x: 0, y: rect.maxY))
 
-        return Color(hue: targetHue, saturation: 1, brightness: brightness)
-    }
+        return path
+   }
 }
 
 struct ContentView: View {
-    @State private var colorCycle = 0.0
+    @State private var insetAmount = 50.0
 
     var body: some View {
-        VStack {
-            ColorCyclingCircle(amount: colorCycle)
-                .frame(width: 300, height: 300)
-
-            Slider(value: $colorCycle)
-        }
+        Trapezoid(insetAmount: insetAmount)
+            .frame(width: 200, height: 100)
+            .onTapGesture {
+                withAnimation {
+                        insetAmount = Double.random(in: 10...90)
+                }
+            }
     }
 }
